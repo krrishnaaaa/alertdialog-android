@@ -3,15 +3,20 @@ package com.pcsalt.example.alertdialogdemo;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.btn_show_dialog).setOnClickListener(view -> displayDialogWithIcon());
+        findViewById(R.id.btn_show_dialog).setOnClickListener(view -> displayMultiSelectDialog());
     }
 
     /*
@@ -62,5 +67,34 @@ public class MainActivity extends AppCompatActivity {
         dialogBuilder.setMessage("You know, you could have provided some valuable message here!");
         dialogBuilder.setPositiveButton("Got it", (dialog, which) -> dialog.dismiss());
         dialogBuilder.create().show();
+    }
+
+    /*
+    display dialog to select multiple options
+     */
+    private boolean[] checkedItems = new boolean[7];
+    private String[] colors;
+    private List<String> selectedColors = new ArrayList<>();
+
+    private void displayMultiSelectDialog() {
+        colors = getResources().getStringArray(R.array.rainbow_colors);
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        dialogBuilder.setTitle("Select primary colors");
+        dialogBuilder.setMultiChoiceItems(colors, checkedItems,
+                (dialogInterface, which, isSelected) -> {
+                    if (isSelected) {
+                        selectedColors.add(colors[which]);
+                    } else {
+                        selectedColors.remove(colors[which]);
+                    }
+                }
+        );
+        dialogBuilder.setPositiveButton("Done", (dialog, which) -> showSelectedColors());
+        dialogBuilder.create().show();
+    }
+
+    private void showSelectedColors() {
+        // do whatever you want to do with the user choice(s)
+        Toast.makeText(this, selectedColors.toString(), Toast.LENGTH_SHORT).show();
     }
 }

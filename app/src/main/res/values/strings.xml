@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">AlertDialog Demo</string>
+    <string-array name="rainbow_colors">
+        <item>Violet</item>
+        <item>Indigo</item>
+        <item>Blue</item>
+        <item>Green</item>
+        <item>Yellow</item>
+        <item>Orange</item>
+        <item>Red</item>
+    </string-array>
 </resources>
