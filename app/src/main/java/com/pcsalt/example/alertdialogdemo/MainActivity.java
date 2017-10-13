@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.btn_show_dialog).setOnClickListener(view -> rateDialog());
+        findViewById(R.id.btn_show_dialog).setOnClickListener(view -> displayDialogWithIcon());
     }
 
     /*
@@ -50,5 +50,17 @@ public class MainActivity extends AppCompatActivity {
 
         dialogBuilder.create().show();
 
+    }
+
+    /*
+    display dialog with icons
+     */
+    private void displayDialogWithIcon() {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        dialogBuilder.setTitle("Info");
+        dialogBuilder.setIcon(R.mipmap.ic_launcher_round);
+        dialogBuilder.setMessage("You know, you could have provided some valuable message here!");
+        dialogBuilder.setPositiveButton("Got it", (dialog, which) -> dialog.dismiss());
+        dialogBuilder.create().show();
     }
 }
