@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.btn_show_dialog).setOnClickListener(view -> displayMultiSelectDialog());
+        findViewById(R.id.btn_show_dialog).setOnClickListener(view -> displaySingleSelectionDialog());
     }
 
     /*
@@ -96,5 +96,27 @@ public class MainActivity extends AppCompatActivity {
     private void showSelectedColors() {
         // do whatever you want to do with the user choice(s)
         Toast.makeText(this, selectedColors.toString(), Toast.LENGTH_SHORT).show();
+    }
+
+    /*
+    display dialog to select single option
+     */
+    private int checkedItem = -1;
+    private String[] androidVersions;
+
+    private void displaySingleSelectionDialog() {
+        androidVersions = getResources().getStringArray(R.array.android_versions);
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        dialogBuilder.setTitle("Which version you are using?");
+        dialogBuilder.setSingleChoiceItems(androidVersions, checkedItem,
+                (dialogInterface, which) -> {
+                    checkedItem = which;
+                });
+        dialogBuilder.setPositiveButton("Done", (dialog, which) -> showSelectedVersion());
+        dialogBuilder.create().show();
+    }
+
+    private void showSelectedVersion() {
+        Toast.makeText(this, "You selected: " + androidVersions[checkedItem], Toast.LENGTH_SHORT).show();
     }
 }

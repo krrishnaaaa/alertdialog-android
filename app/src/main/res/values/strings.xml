@@ -9,4 +9,13 @@
         <item>Orange</item>
         <item>Red</item>
     </string-array>
+    <string-array name="android_versions">
+        <item>Oreo (8.0)</item>
+        <item>Nougat (7.0, 7.1)</item>
+        <item>Marshmallow (6.0)</item>
+        <item>Lollipop (5.0, 5.1)</item>
+        <item>KitKat (4.4)</item>
+        <item>Jelly Bean (4.1.x, 4.2.x, 4.3)</item>
+        <item>Ice Cream Sandwich (4.0.3, 4.0.4)</item>
+    </string-array>
 </resources>
