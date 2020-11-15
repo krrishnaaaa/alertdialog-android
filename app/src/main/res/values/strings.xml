@@ -10,6 +10,8 @@
         <item>Red</item>
     </string-array>
     <string-array name="android_versions">
+        <item>Android 10</item>
+        <item>Pie (9.0)</item>
         <item>Oreo (8.0)</item>
         <item>Nougat (7.0, 7.1)</item>
         <item>Marshmallow (6.0)</item>
